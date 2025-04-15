@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_techtaste/app/homepage/homepage_screen.dart';
 
 import '../_core/app_colors.dart';
 
@@ -23,7 +24,8 @@ class SplashScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Image.asset(
-                  'lib/assets/Logo home.png',
+                  'lib/assets/Logo home@2x.png',
+                  width: 192,
                 ),
                 const Column(
                   children: [
@@ -32,7 +34,7 @@ class SplashScreen extends StatelessWidget {
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 22,
-                        fontWeight: FontWeight.w200,
+                        fontWeight: FontWeight.w400,
                       ),
                     ),
                     Text(
@@ -49,8 +51,23 @@ class SplashScreen extends StatelessWidget {
                   child: SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
-                      onPressed: () {},
-                      child: Text("Bora!"),
+                      onPressed: () {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) {
+                              return HomepageScreen();
+                            },
+                          ),
+                        );
+                      },
+                      child: Text(
+                        "Bora!",
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
                     ),
                   ),
                 )
