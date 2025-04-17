@@ -1,0 +1,29 @@
+{
+    "categories": [
+        {
+            "id": "1",
+            "name": "Petiscos",
+            "imagePath": "categories/Petiscos.png"
+        },
+        {
+            "id": "5",
+            "name": "Principais",
+            "imagePath": "categories/Massas.png"
+        },
+        {
+            "id": "4",
+            "name": "Massas",
+            "imagePath": "categories/Petiscos.png"
+        },
+        {
+            "id": "2",
+            "name": "Sobremesas",
+            "imagePath": "categories/Sobremesas.png"
+        },
+        {
+            "id": "3",
+            "name": "Bebidas",
+            "imagePath": "categories/Bebidas.png"
+        }
+    ]
+  }

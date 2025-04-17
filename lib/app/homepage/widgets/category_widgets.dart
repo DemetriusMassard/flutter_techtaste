@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_techtaste/app/_core/app_colors.dart';
 
+import '../../../model/category.dart';
+
 class CategoryWidget extends StatelessWidget {
-  final String category;
+  final Category category;
   const CategoryWidget({required this.category, super.key});
 
   @override
@@ -19,13 +21,13 @@ class CategoryWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Image.asset(
-            "lib/assets/categories/$category.png",
+            "lib/assets/${category.imagePath}",
             height: 48,
           ),
           Text(
-            category,
+            category.name,
             style: TextStyle(
-              fontSize: 16,
+              fontSize: 14,
               fontWeight: FontWeight.w400,
               color: AppColors.mainTextColor,
             ),

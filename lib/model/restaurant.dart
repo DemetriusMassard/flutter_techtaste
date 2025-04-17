@@ -1,13 +1,15 @@
+import 'package:flutter_techtaste/model/dish.dart';
+
 class Restaurant {
-  Restaurant({
-    required this.id,
-    required this.imagePath,
-    required this.name,
-    required this.description,
-    required this.stars,
-    required this.distance,
-    required this.categories,
-  });
+  Restaurant(
+      {required this.id,
+      required this.imagePath,
+      required this.name,
+      required this.description,
+      required this.stars,
+      required this.distance,
+      required this.categories,
+      required this.dishes});
 
   String id;
   String imagePath;
@@ -16,6 +18,7 @@ class Restaurant {
   double stars;
   int distance;
   List<String> categories;
+  List<Dish> dishes;
 
   Map<String, dynamic> toMap() {
     return {
@@ -26,6 +29,7 @@ class Restaurant {
       'stars': stars,
       'distance': distance,
       'categories': categories,
+      'dishes': dishes.map((dish) => dish.toMap()).toList()
     };
   }
 
@@ -38,6 +42,7 @@ class Restaurant {
       stars: map['stars'],
       distance: map['distance'],
       categories: List<String>.from(map['categories']),
+      dishes: List<Dish>.from(map['dishes'].map((dish) => Dish.fromMap(dish))),
     );
   }
 

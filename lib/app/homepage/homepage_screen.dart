@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_techtaste/app/_core/app_colors.dart';
+import 'package:flutter_techtaste/app/_core/widgets/appbar.dart';
 import 'package:flutter_techtaste/app/homepage/widgets/category_widgets.dart';
 import 'package:flutter_techtaste/app/homepage/widgets/restaurant_widget.dart';
 import 'package:flutter_techtaste/data/categories_data.dart';
@@ -14,13 +15,11 @@ class HomepageScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     RestaurantsData restaurantsData = Provider.of<RestaurantsData>(context);
+    CategoriesData categoriesData = Provider.of<CategoriesData>(context);
+
     return Scaffold(
         drawer: Drawer(),
-        appBar: AppBar(
-          actions: [
-            IconButton(onPressed: () {}, icon: Icon(Icons.account_circle))
-          ],
-        ),
+        appBar: getAppbar(context: context),
         body: Padding(
           padding: EdgeInsets.symmetric(horizontal: 24),
           child: SingleChildScrollView(
@@ -42,7 +41,20 @@ class HomepageScreen extends StatelessWidget {
                     color: AppColors.mainTextColor,
                   ),
                 ),
-                TextFormField(),
+                TextField(
+                  decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: AppColors.mainColor),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    border: OutlineInputBorder(
+                      borderSide: BorderSide(color: AppColors.mainColor),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    labelText: "O que você quer comer?",
+                    labelStyle: TextStyle(color: AppColors.secondaryTextColor),
+                  ),
+                ),
                 Text(
                   "Escolha por Categoria",
                   style: TextStyle(
@@ -56,10 +68,10 @@ class HomepageScreen extends StatelessWidget {
                   child: Row(
                     spacing: 22,
                     children: List.generate(
-                      CategoriesData.listCategories.length,
+                      categoriesData.listCategories.length,
                       (index) {
                         return CategoryWidget(
-                          category: CategoriesData.listCategories[index],
+                          category: categoriesData.listCategories[index],
                         );
                       },
                     ),
