@@ -44,17 +44,6 @@ class RestaurantScreen extends StatelessWidget {
                       restaurant.dishes.length,
                       (index) {
                         Dish dish = restaurant.dishes[index];
-                        // return ListTile(
-                        //   leading: _getDishImage(dish.imagePath),
-                        //   title: Text(dish.name),
-                        //   subtitle: Text("R\$ ${dish.price.toStringAsFixed(2)}"),
-                        //   trailing: IconButton(
-                        //     onPressed: () {
-                        //       context.read<BagProvider>().addAllDishes([dish]);
-                        //     },
-                        //     icon: Icon(Icons.add),
-                        //   ),
-                        // );
                         return DishWidget(dish: dish);
                       },
                     ),
