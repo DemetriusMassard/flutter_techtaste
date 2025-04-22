@@ -10,21 +10,17 @@ class DishScreen extends StatefulWidget {
   const DishScreen({required this.dish, super.key});
 
   final Dish dish;
+
   @override
-  State<DishScreen> createState() => _DishScreenState(dish);
+  State<DishScreen> createState() => _DishScreenState();
 }
 
 class _DishScreenState extends State<DishScreen> {
-  _DishScreenState(this.dish);
-
-  Dish dish;
-
   int dishQty = 0;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: getAppbar(context: context, title: dish.name),
+      appBar: getAppbar(context: context, title: widget.dish.name),
       body: Padding(
         padding: EdgeInsets.all(16),
         child: ClipRRect(
@@ -38,21 +34,21 @@ class _DishScreenState extends State<DishScreen> {
                 fit: BoxFit.fitWidth,
               ),
               Text(
-                dish.name,
+                widget.dish.name,
                 style: TextStyle(
                     color: AppColors.mainTextColor,
                     fontSize: 22,
                     fontWeight: FontWeight.w700),
               ),
               Text(
-                "R\$ ${dish.price.toStringAsFixed(2)}",
+                "R\$ ${widget.dish.price.toStringAsFixed(2)}",
                 style: TextStyle(
                     color: AppColors.secondaryTextColor,
                     fontSize: 22,
                     fontWeight: FontWeight.w400),
               ),
               Text(
-                dish.description,
+                widget.dish.description,
                 style: TextStyle(
                   color: AppColors.secondaryTextColor,
                   fontSize: 14,
@@ -116,7 +112,7 @@ class _DishScreenState extends State<DishScreen> {
   void addToBag() {
     List<Dish> dishesToAdd = [];
     for (int i = 0; i < dishQty; i++) {
-      dishesToAdd.add(dish);
+      dishesToAdd.add(widget.dish);
     }
     context.read<BagProvider>().addAllDishes(dishesToAdd);
     setState(() {
