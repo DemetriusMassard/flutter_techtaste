@@ -30,4 +30,12 @@ class BagProvider extends ChangeNotifier {
     }
     return mappedBag;
   }
+
+  int getCheckoutTotal() {
+    int total = 0;
+    for (Dish dish in dishesOnBag) {
+      total += dish.price;
+    }
+    return total;
+  }
 }
