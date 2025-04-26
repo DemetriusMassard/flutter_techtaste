@@ -202,7 +202,8 @@ class CheckoutScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildValueConfirmation(BagProvider bagProvider, context) {
+  Widget _buildValueConfirmation(
+      BagProvider bagProvider, BuildContext context) {
     return Column(
       children: [
         Text(
@@ -289,7 +290,28 @@ class CheckoutScreen extends StatelessWidget {
                 width: double.infinity,
                 height: 48,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    showDialog<String>(
+                        context: context,
+                        builder: (BuildContext context) => AlertDialog(
+                              title: const Text('Confirmação'),
+                              content: const Text('Enviar pedido? Verifique todos se todos os itens do pedido estão corretos'),
+                              actions: <Widget>[
+                                TextButton(
+                                  onPressed: () =>
+                                      Navigator.pop(context, 'Cancel'),
+                                  child: const Text('Cancel'),
+                                ),
+                                TextButton(
+                                  onPressed: () {
+                                    bagProvider.clearBag();
+                                    Navigator.pop(context, "OK");
+                                  },
+                                  child: const Text('OK'),
+                                ),
+                              ],
+                            ));
+                  },
                   child: Row(
                     spacing: 4,
                     mainAxisSize: MainAxisSize.min,
@@ -317,7 +339,7 @@ class CheckoutScreen extends StatelessWidget {
     );
   }
 
-  VoidCallback? purchaseConfirmation(context) {
+  VoidCallback? purchaseConfirmation(BuildContext context) {
     showDialog<String>(
       context: context,
       builder: (BuildContext context) => AlertDialog(
